@@ -30,8 +30,8 @@ class Downloader:
     def download(self, platform: str, url: str, filename: str) -> str:
         """Download content based on the detected platform."""
         if platform == "YouTube":
-            if youthon.Video(url).length_seconds > 60:
-                raise ValueError("Скачивание доступно только для видео короче 1 минуты.")
+            # if youthon.Video(url).length_seconds > 60:
+            #     raise ValueError("Скачивание доступно только для видео короче 1 минуты.")
             return self.download_video(url, f"{filename}.mp4")
         elif platform in ["Instagram", "TikTok", "X"]:
             return self.download_video(url, f"{filename}.mp4", True)
