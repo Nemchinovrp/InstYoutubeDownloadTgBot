@@ -30,3 +30,9 @@ Please adhere to this project's `code of conduct`.
 The project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
 
 run with uv -- "uv run --env-file=.env  main.py"
+
+# Сборка образа
+docker build -t inst_youtube_bot .
+
+# Запуск контейнера
+docker run -e TOKEN=""" -d --name bot inst_youtube_bot

@@ -1,20 +1,20 @@
 # Используем официальный образ Python
 FROM python:3.11-slim
 
-# Установка uv
+# Устанавливаем uv
 RUN pip install uv
 
-# Рабочая директория
+# Рабочая директория внутри контейнера
 WORKDIR /app
 
-# Копируем только requirements.txt, чтобы воспользоваться кэшированием слоёв
-COPY requirements.txt .
+# Копируем pyproject.toml и uv.lock
+COPY pyproject.toml uv.lock ./
 
 # Устанавливаем зависимости через uv
-RUN uv pip install -r requirements.txt --python 3.11
+RUN uv sync --frozen
 
-# Копируем весь код
+# Копируем исходные файлы
 COPY . .
 
-# Запуск бота
+# Запускаем бота
 CMD ["uv", "run", "python", "main.py"]
