@@ -12,7 +12,7 @@ from handlers import router
 
 async def run_bot():
     load_dotenv()
-    TOKEN = os.getenv("TOKEN")
+    TOKEN = os.getenv("BOT_TOKEN")
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 

@@ -9,7 +9,7 @@ from handlers import downloader
 
 router = Router()
 load_dotenv()
-bot = Bot(os.getenv("TOKEN"))
+bot = Bot(os.getenv("BOT_TOKEN"))
 
 
 @router.message(F.text, Command("start"))
