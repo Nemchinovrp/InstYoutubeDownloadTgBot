@@ -79,7 +79,7 @@ Sending {}
             ".mp3": "audio"
         }.get(filename[-4:])
         await msg.edit_text(msg_text.format(platform, "✅", "🟨"))
-        await getattr(message, f"answer_{file_type}")(types.FSInputFile(filename), caption="<b>@free_yt_dl_bot</b>")
+        await getattr(message, f"answer_{file_type}")(types.FSInputFile(filename), caption="<b>@Kachalka38_bot</b>")
         time.sleep(0.5)  # Rate limits
         await msg.edit_text(msg_text.format(platform, "✅", "✅"))
     except Exception as e:
