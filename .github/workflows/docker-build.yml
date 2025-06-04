@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - master  # можно изменить на нужную тебе ветку
+      - master
 
 jobs:
   build:
@@ -27,4 +27,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/my-telegram-bot:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/youtube-dl-bot-main:latest
