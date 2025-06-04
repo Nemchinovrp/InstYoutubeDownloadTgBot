@@ -28,3 +28,5 @@ Please adhere to this project's `code of conduct`.
 
 ## License
 The project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
+
+run with uv -- "uv run --env-file=.env  main.py"
