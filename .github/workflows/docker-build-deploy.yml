@@ -68,11 +68,11 @@ jobs:
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/youtube-dl-bot-main:latest
 
             # Останавливаем и удаляем старый контейнер
-            docker stop my_bot || true
-            docker rm my_bot || true
+            docker stop youtube-dl-bot-main || true
+            docker rm youtube-dl-bot-main || true
 
             # Запускаем новый контейнер
             docker run -d \
-              --name my_bot \
+              --name youtube-dl-bot-main \
               -e BOT_TOKEN=${{ secrets.BOT_TOKEN }} \
               ${{ secrets.DOCKER_HUB_USERNAME }}/youtube-dl-bot-main:latest
