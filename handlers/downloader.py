@@ -25,6 +25,7 @@ class Downloader:
         "Instagram": ["https://www.instagram.com/reel/", "https://instagram.com/reel/"],
         "Pinterest": ["https://pin.it/", "https://www.pinterest.com/pin/", "https://in.pinterest.com/pin/"],
         "Spotify": ["https://open.spotify.com/track/"],
+        "VK": ["https://vk.com/clip-"]
     }
 
     def download(self, platform: str, url: str, filename: str) -> str:
@@ -33,7 +34,7 @@ class Downloader:
             # if youthon.Video(url).length_seconds > 60:
             #     raise ValueError("Скачивание доступно только для видео короче 1 минуты.")
             return self.download_video(url, f"{filename}.mp4")
-        elif platform in ["Instagram", "TikTok", "X"]:
+        elif platform in ["Instagram", "TikTok", "X", "VK"]:
             return self.download_video(url, f"{filename}.mp4", True)
         elif platform == "Pinterest":
             return self.download_pinterest_image(url, f"{filename}.png")
