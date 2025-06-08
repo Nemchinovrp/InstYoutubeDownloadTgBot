@@ -25,7 +25,7 @@ class Downloader:
         "Instagram": ["https://www.instagram.com/reel/", "https://instagram.com/reel/"],
         "Pinterest": ["https://pin.it/", "https://www.pinterest.com/pin/", "https://in.pinterest.com/pin/"],
         "Spotify": ["https://open.spotify.com/track/"],
-        "VK": ["https://vk.com/clip-"]
+        "VK": ["https://vk.com/clip-","https://vkvideo.ru/video-"]
     }
 
     def download(self, platform: str, url: str, filename: str) -> str:
