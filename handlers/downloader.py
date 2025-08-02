@@ -9,7 +9,6 @@ import requests
 import youthon
 import yt_dlp
 
-
 class Downloader:
     HEADERS = {
         "User-Agent": (
