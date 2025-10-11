@@ -3,19 +3,21 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install uv
 
 WORKDIR /app
 
-COPY pyproject.toml uv.lock* ./
+# Копируем только requirements если есть
+COPY pyproject.toml ./
 
-# Добавляем отладочные команды
-RUN ls -la
-RUN cat pyproject.toml || echo "pyproject.toml not found"
-RUN uv sync --frozen || uv sync
+# Устанавливаем зависимости напрямую через pip как запасной вариант
+RUN uv pip install -e . || \
+    pip install -e . || \
+    echo "Trying direct installation..."
 
 COPY . .
 
-CMD ["uv", "run", "python", "main.py"]
+CMD ["python", "main.py"]
