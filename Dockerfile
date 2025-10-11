@@ -1,27 +1,21 @@
 FROM python:3.11-slim
 
-# Устанавливаем системные зависимости
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Устанавливаем uv
 RUN pip install uv
 
 WORKDIR /app
 
-# Копируем файлы зависимостей
-COPY pyproject.toml ./
+COPY pyproject.toml uv.lock* ./
 
-# Генерируем lock файл если его нет и устанавливаем зависимости
-RUN if [ -f "uv.lock" ]; then \
-        uv sync --frozen; \
-    else \
-        uv sync; \
-    fi
+# Добавляем отладочные команды
+RUN ls -la
+RUN cat pyproject.toml || echo "pyproject.toml not found"
+RUN uv sync --frozen || uv sync
 
-# Копируем исходный код
 COPY . .
 
 CMD ["uv", "run", "python", "main.py"]
